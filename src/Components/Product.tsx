@@ -8,7 +8,7 @@ export function Product({ product }: ProductProp) {
   return (
     <div className="bg-gray-200 h-100 font-semibold flex flex-col justify-between p-4">
       {/* Image */}
-      <div className="w-3/4 h-50 mx-auto">
+      <div className="w-3/4 h-1/2 mx-auto">
         <img className="object-contain h-full w-full" src={product.image} />
       </div>
 

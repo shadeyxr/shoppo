@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
+
 export function Header() {
   return (
     <>
       <div className="flex items-center fixed h-20 top-0 left-0 right-0 bg-[#181818] px-5">
         {/* Logo */}
         <div className="flex flex-1 items-center">
-          <img className="w-25 cursor-pointer" src="main.png" alt="Logo" />
+          <Link to="/">
+            <img className="w-25 cursor-pointer" src="main.png" alt="Logo" />
+          </Link>
         </div>
 
         {/* Search bar */}
@@ -27,7 +31,9 @@ export function Header() {
 
         {/* Cart */}
         <div className="flex flex-1 justify-end items-center">
-          <img className="w-11 cursor-pointer" src="cart.png" alt="Cart" />
+          <Link to="/checkout">
+            <img className="w-11 cursor-pointer" src="cart.png" alt="Cart" />
+          </Link>
         </div>
       </div>
     </>
