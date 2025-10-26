@@ -4,12 +4,34 @@ import { CartContext } from "../../CartContext";
 
 export function CheckoutPage() {
   const cartContext = useContext(CartContext);
+  const shippingPrice = 2.99;
 
   if (!cartContext) {
     throw new Error("CartContext must be used within a CartProvider");
   }
 
   const { cart } = cartContext;
+
+  function calculateSubTotal() {
+    try {
+      if (!cart) {
+        throw new Error("cart doesn't exist");
+      }
+
+      let subTotal = 0;
+      cart.forEach((cartItem) => {
+        subTotal += cartItem.data.price * cartItem.quantity;
+      });
+      return subTotal;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("calculation error", error.message);
+      } else {
+        console.error("unknown error");
+      }
+      return 0;
+    }
+  }
 
   return (
     <>
@@ -67,15 +89,15 @@ export function CheckoutPage() {
           <div className="flex flex-col gap-3 text-gray-700">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>$45.99</span>
+              <span>${calculateSubTotal()}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span>$2.99</span>
+              <span>${shippingPrice}</span>
             </div>
             <div className="border-t border-gray-300 mt-2 pt-2 flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>$48.98</span>
+              <span>${calculateSubTotal() + shippingPrice}</span>
             </div>
           </div>
           <button className="mt-6 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition cursor-pointer">
