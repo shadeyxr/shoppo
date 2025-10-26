@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type { ProductType } from "../Types/Types";
+import type { ProductType } from "../../Types/Types";
 import { useContext } from "react";
-import { CartContext } from "../CartContext";
+import { CartContext } from "../../CartContext";
 
 type ProductProp = {
   product: ProductType;

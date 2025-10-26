@@ -27,8 +27,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const removeCartItem = (productId: number) => {
+    setCart((prev) => {
+      return prev.filter((product) => product.data.id != productId);
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeCartItem }}>
       {children}
     </CartContext.Provider>
   );

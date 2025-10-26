@@ -4,13 +4,14 @@ import { CartContext } from "../../CartContext";
 
 export function CheckoutPage() {
   const cartContext = useContext(CartContext);
-  const shippingPrice = 2.99;
+  let shippingPrice = 0;
 
   if (!cartContext) {
     throw new Error("CartContext must be used within a CartProvider");
   }
 
   const { cart } = cartContext;
+  const { removeCartItem } = cartContext;
 
   function calculateSubTotal() {
     try {
@@ -21,6 +22,7 @@ export function CheckoutPage() {
       let subTotal = 0;
       cart.forEach((cartItem) => {
         subTotal += cartItem.data.price * cartItem.quantity;
+        shippingPrice = 2.99;
       });
       return subTotal;
     } catch (error) {
@@ -72,7 +74,12 @@ export function CheckoutPage() {
                     {/* Quantity & Delete */}
                     <div className="flex flex-col justify-center items-end gap-1">
                       <div>Qty: {cartItem.quantity}</div>
-                      <button className="text-red-500 hover:underline">
+                      <button
+                        className="text-red-500 hover:underline"
+                        onClick={() => {
+                          removeCartItem(cartItem.data.id);
+                        }}
+                      >
                         Delete
                       </button>
                     </div>
@@ -89,15 +96,15 @@ export function CheckoutPage() {
           <div className="flex flex-col gap-3 text-gray-700">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>${calculateSubTotal()}</span>
+              <span>${calculateSubTotal().toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span>${shippingPrice}</span>
+              <span>${shippingPrice.toFixed(2)}</span>
             </div>
             <div className="border-t border-gray-300 mt-2 pt-2 flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>${calculateSubTotal() + shippingPrice}</span>
+              <span>${(calculateSubTotal() + shippingPrice).toFixed(2)}</span>
             </div>
           </div>
           <button className="mt-6 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition cursor-pointer">
