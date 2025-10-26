@@ -1,6 +1,16 @@
 import { Header } from "../Header";
+import { useContext } from "react";
+import { CartContext } from "../../CartContext";
 
 export function CheckoutPage() {
+  const cartContext = useContext(CartContext);
+
+  if (!cartContext) {
+    throw new Error("CartContext must be used within a CartProvider");
+  }
+
+  const { cart } = cartContext;
+
   return (
     <>
       <Header />
@@ -10,33 +20,44 @@ export function CheckoutPage() {
           {/* Your Cart */}
           <div className="flex flex-col gap-5 mx-5 my-5 w-full">
             <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-            <div className="cart-item flex items-center w-full gap-4 p-4 bg-gray-100 rounded-lg shadow">
-              {/* Image */}
-              <div className="w-24 h-24">
-                <img
-                  src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
-                  alt="Product"
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            {cart.map((cartItem) => {
+              return (
+                <div
+                  className="cart-item flex items-center w-full gap-4 p-4 bg-gray-100 rounded-lg shadow"
+                  key={`cartItem-${cartItem.data.id}`}
+                >
+                  {/* Image */}
+                  <div className="w-24 h-24">
+                    <img
+                      src={cartItem.data.image}
+                      alt="Product"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
 
-              {/* Info and Actions */}
-              <div className="flex justify-between items-center flex-1">
-                {/* Name & Price */}
-                <div className="flex flex-col justify-center">
-                  <div className="font-bold text-lg">Product Name</div>
-                  <div className="text-gray-700">$25.99</div>
-                </div>
+                  {/* Info and Actions */}
+                  <div className="flex justify-between items-center flex-1">
+                    {/* Name & Price */}
+                    <div className="flex flex-col justify-center">
+                      <div className="font-bold text-lg">
+                        {cartItem.data.title}
+                      </div>
+                      <div className="text-gray-700">
+                        ${cartItem.data.price.toFixed(2)}
+                      </div>
+                    </div>
 
-                {/* Quantity & Delete */}
-                <div className="flex flex-col justify-center items-end gap-1">
-                  <div>Qty: 1</div>
-                  <button className="text-red-500 hover:underline">
-                    Delete
-                  </button>
+                    {/* Quantity & Delete */}
+                    <div className="flex flex-col justify-center items-end gap-1">
+                      <div>Qty: {cartItem.quantity}</div>
+                      <button className="text-red-500 hover:underline">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
 
