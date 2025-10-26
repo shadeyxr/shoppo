@@ -1,6 +1,6 @@
 import { Header } from "../Header";
 import { Product } from "../Product";
-import type { ProductType } from "../../Types/ProductType";
+import type { ProductType } from "../../Types/Types";
 
 type HomePageProps = {
   products: ProductType[]; // an array of products
