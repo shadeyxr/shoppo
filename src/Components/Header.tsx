@@ -7,7 +7,7 @@ export function Header() {
         {/* Logo */}
         <div className="flex flex-1 items-center">
           <Link to="/">
-            <img className="w-25 cursor-pointer" src="main.png" alt="Logo" />
+            <img className="w-40 cursor-pointer" src="main.png" alt="Logo" />
           </Link>
         </div>
 
