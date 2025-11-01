@@ -7,7 +7,7 @@ export function Header() {
         {/* Logo */}
         <div className="flex flex-1 items-center">
           <Link to="/">
-            <img className="w-40 cursor-pointer" src="main.png" alt="Logo" />
+            <img className="w-40 cursor-pointer" src="/images/main.png" alt="Logo" />
           </Link>
         </div>
 
@@ -23,7 +23,7 @@ export function Header() {
             {/* Search icon inside input */}
             <img
               className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 filter invert cursor-pointer"
-              src="search.png"
+              src="/images/search.png"
               alt="Search"
             />
           </div>
@@ -32,7 +32,7 @@ export function Header() {
         {/* Cart */}
         <div className="flex flex-1 justify-end items-center">
           <Link to="/checkout">
-            <img className="w-11 cursor-pointer" src="cart.png" alt="Cart" />
+            <img className="w-11 cursor-pointer" src="/images/cart.png" alt="Cart" />
           </Link>
         </div>
       </div>

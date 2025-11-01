@@ -43,12 +43,12 @@ export function CheckoutPage() {
         <div className="flex flex-3 ml-5 w-full">
           {/* Your Cart */}
           <div className="flex flex-col gap-5 mx-5 my-5 w-full">
-            <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+            <h2 className="text-2xl font-bold mb-4">{cart ? "Your Cart" : "Cart is Empty"}</h2>
             {cart.map((cartItem) => {
               return (
                 <div
                   className="cart-item flex items-center w-full gap-4 p-4 bg-gray-100 rounded-lg shadow"
-                  key={`cartItem-${cartItem.data.id}`}
+                  key={`cartItem-${cartItem.data.id}-${cartItem.size}`}
                 >
                   {/* Image */}
                   <div className="w-24 h-24">
@@ -61,7 +61,7 @@ export function CheckoutPage() {
 
                   {/* Info and Actions */}
                   <div className="flex justify-between items-center flex-1">
-                    {/* Name & Price */}
+                    {/* Name & Price & Size */}
                     <div className="flex flex-col justify-center">
                       <div className="font-bold text-lg">
                         {cartItem.data.title}
@@ -69,6 +69,7 @@ export function CheckoutPage() {
                       <div className="text-gray-700">
                         ${cartItem.data.price.toFixed(2)}
                       </div>
+                      {cartItem.size!="n/a" && (<div className="text-gray-700">Size: {cartItem.size}</div>)}
                     </div>
 
                     {/* Quantity & Delete */}
@@ -77,7 +78,7 @@ export function CheckoutPage() {
                       <button
                         className="text-red-500 hover:underline"
                         onClick={() => {
-                          removeCartItem(cartItem.data.id);
+                          removeCartItem(cartItem.data.id, cartItem.size);
                         }}
                       >
                         Delete

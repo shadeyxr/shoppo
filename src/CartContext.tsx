@@ -4,8 +4,8 @@ import type { CartItem, ProductType } from "./Types/Types";
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: ProductType) => void;
-  removeCartItem: (productId: number) => void;
+  addToCart: (product: ProductType, size:string) => void;
+  removeCartItem: (productId: number, size:string) => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(

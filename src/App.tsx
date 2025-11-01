@@ -6,6 +6,7 @@ import type { ProductType } from "./Types/Types";
 import axios from "axios";
 import { CartProvider } from "./cartProvider";
 import "./App.css";
+import { ProductPage } from "./Components/Pages/ProductPage";
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route index element={<HomePage products={products} />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/product/:id" element={<ProductPage products={products} />} />
       </Routes>
     </CartProvider>
   );

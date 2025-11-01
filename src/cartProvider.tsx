@@ -14,22 +14,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product: ProductType) => {
+  const addToCart = (product: ProductType, size: string) => {
     setCart((prev) => {
-      const existing = prev.find((i) => i.data.id === product.id);
+      const existing = prev.find(
+        (i) => i.data.id === product.id && i.size === size
+      );
       if (existing) {
         return prev.map((i) =>
-          i.data.id === product.id ? { ...i, quantity: i.quantity++ } : i
+          i.data.id === product.id && i.size === size
+            ? { ...i, quantity: i.quantity + 1 }
+            : i
         );
       } else {
-        return [...prev, { quantity: 1, data: product }];
+        return [...prev, { quantity: 1, data: product, size }];
       }
     });
   };
 
-  const removeCartItem = (productId: number) => {
+  const removeCartItem = (productId: number, size: string) => {
     setCart((prev) => {
-      return prev.filter((product) => product.data.id != productId);
+      return prev.filter(
+        (product) => !(product.data.id === productId && product.size === size)
+      );
     });
   };
 
