@@ -33,6 +33,8 @@ useEffect(() => {
   setSortedProducts(sorted);
 }, [sort, products]);
 
+
+
   return (
     <>
       <Header />
