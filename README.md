@@ -14,4 +14,4 @@ An ecommerce web app that lets users simulate buying products from an online sto
 - TailwindCSS
   
 ## Live Demo
-[Link to Live Demo](https://github.com/shadeyxr/shoppo)
+[Link to Live Demo](https://shadeyxr.github.io/shoppo/)
