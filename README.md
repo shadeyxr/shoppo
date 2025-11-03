@@ -7,3 +7,5 @@ An ecommerce web app that lets users simulate buying products from an online sto
 - Vite
 - TailwindCSS
   
+## Live Demo
+[Link to Live Demo](https://github.com/shadeyxr/shoppo)
