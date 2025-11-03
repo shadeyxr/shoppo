@@ -5,23 +5,21 @@ type ProductProp = {
 };
 
 export function Product({ product }: ProductProp) {
-
-
   return (
-    <div className="bg-gray-100 h-100 font-semibold flex flex-col justify-between p-4 rounded-xl">
+    <div className="bg-gray-100 font-semibold flex flex-col justify-between p-4 rounded-xl h-full">
       {/* Image */}
-      <div className="w-3/4 h-1/2 mx-auto">
-        <img className="object-contain h-full w-full" src={product.image} />
+      <div className="w-full h-48 flex items-center justify-center">
+        <img className="object-contain h-full w-full" src={product.image} alt={product.title} />
       </div>
 
       {/* Product Title */}
-      <div className="w-full line-clamp-3 text-center mt-2">
+      <div className="mt-2 text-center line-clamp-3">
         {product.title}
       </div>
 
-      {/* Bottom row: price + add to cart */}
-      <div className="flex justify-between items-center mt-4 w-full">
-        <div className="text-left">${product.price.toFixed(2)}</div>
+      {/* Bottom row: price */}
+      <div className="flex justify-between items-center mt-4">
+        <div className="text-lg font-bold text-left">${product.price.toFixed(2)}</div>
       </div>
     </div>
   );

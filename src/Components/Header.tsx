@@ -6,7 +6,7 @@ import mainLogo from '../assets/images/main.png'
 export function Header() {
   return (
     <>
-      <div className="flex items-center fixed h-20 top-0 left-0 right-0 bg-[#181818] px-5">
+      <div className="flex items-center fixed h-20 top-0 left-0 right-0 bg-[#181818] px-5 z-9999">
         {/* Logo */}
         <div className="flex flex-1 items-center">
           <Link to="/">
