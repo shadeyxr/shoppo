@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import cartLogo from '../assets/images/cart.png'
 import searchLogo from '../assets/images/search.png'
 import mainLogo from '../assets/images/main.png'
+import {ShoppingBasket} from 'lucide-react';
 
 export function Header() {
   return (
@@ -35,7 +35,7 @@ export function Header() {
         {/* Cart */}
         <div className="flex flex-1 justify-end items-center">
           <Link to="/checkout">
-            <img className="w-11 cursor-pointer" src={cartLogo} alt="Cart" />
+            <ShoppingBasket size={40} color="#ffffff" strokeWidth={1.5} />
           </Link>
         </div>
       </div>

@@ -6,7 +6,7 @@ type ProductProp = {
 
 export function Product({ product }: ProductProp) {
   return (
-    <div className="bg-gray-100 font-semibold flex flex-col justify-between p-4 rounded-xl h-full shadow hover:shadow-lg">
+    <div className="font-semibold flex flex-col justify-between p-4 rounded-xl h-full shadow hover:shadow-lg transition-shadow duration-300 ease-in-out">
       {/* Image */}
       <div className="w-full h-48 flex items-center justify-center">
         <img className="object-contain h-full w-full" src={product.image} alt={product.title} />

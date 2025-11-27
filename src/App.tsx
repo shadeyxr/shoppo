@@ -1,5 +1,5 @@
 import { HomePage } from "./Components/Pages/HomePage";
-import { CheckoutPage } from "./Components/Pages/CheckoutPage";
+import CheckoutPage  from "./Components/Pages/CheckoutPage";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
 import type { ProductType } from "./Types/Types";
