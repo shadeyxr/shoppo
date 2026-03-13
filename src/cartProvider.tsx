@@ -32,15 +32,29 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const removeCartItem = (productId: number, size: string) => {
-    setCart((prev) => {
-      return prev.filter(
+    setCart((prev) =>
+      prev.filter(
         (product) => !(product.data.id === productId && product.size === size)
-      );
-    });
+      )
+    );
+  };
+
+  const updateQuantity = (productId: number, size: string, quantity: number) => {
+    if (quantity < 1) {
+      removeCartItem(productId, size);
+      return;
+    }
+    setCart((prev) =>
+      prev.map((item) =>
+        item.data.id === productId && item.size === size
+          ? { ...item, quantity }
+          : item
+      )
+    );
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeCartItem }}>
+    <CartContext.Provider value={{ cart, addToCart, removeCartItem, updateQuantity }}>
       {children}
     </CartContext.Provider>
   );
